@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DVRNVariantC</string>
+    <string name="secure_keyboard_subtype_label">Secure Keyboard</string>
 </resources>
