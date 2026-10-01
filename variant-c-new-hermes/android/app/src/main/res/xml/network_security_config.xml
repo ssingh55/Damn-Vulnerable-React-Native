@@ -7,5 +7,5 @@
          relies on via localhost. DVRN's mock backend also runs on the host
          machine over plain HTTP, reached via the emulator's loopback alias -
          fine for local dev infra, not a real deployed backend. -->
-    <base-config cleartextTrafficPermitted="true" />
+
 </network-security-config>
