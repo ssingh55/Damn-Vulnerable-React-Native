@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <!-- A custom networkSecurityConfig overrides the manifest's
-         usesCleartextTraffic attribute entirely (not just adds to it), so a
-         base-config is needed here to keep the same cleartext behavior Metro's
-         own dev tooling (packager status check, Fast Refresh websocket)
-         relies on via localhost. DVRN's mock backend also runs on the host
-         machine over plain HTTP, reached via the emulator's loopback alias -
-         fine for local dev infra, not a real deployed backend. -->
-    <base-config cleartextTrafficPermitted="true" />
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">api.example.com</domain>
+        <pin-set expiration="2027-06-01">
+            <!-- Primary: SPKI SHA-256 of the leaf or intermediate certificate -->
+            <pin digest="SHA-256">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</pin>
+            <!-- Backup: pre-generated key to use during rotation -->
+            <pin digest="SHA-256">BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB=</pin>
+        </pin-set>
+    </domain-config>
 </network-security-config>
